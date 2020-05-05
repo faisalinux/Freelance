@@ -1,0 +1,13 @@
+
+Filename,Modifecationdate,size,Owner,Group,uid,permission
+temp/bin/btrfsck,16-Jun-2017,5,root,root,1,lrwxrwxrwx
+
+
+
+
+
+
+
+CREATE TABLE binsbintemp (filename VARCHAR(255) NOT NULL, Modifecationdate VARCHAR(255) NOT NULL, size VARCHAR(255) NOT NULL, owner VARCHAR(255) NOT NULL, usergroup VARCHAR(255) NOT NULL, uid VARCHAR(255) NOT NULL, permission VARCHAR(255) NOT NULL;
+
+LOAD DATA LOCAL INFILE 'filedata.txt' INTO TABLE binsbin FIELDS TERMINATED BY ',' LINES TERMINATED BY '\n' IGNORE 1 ROWS (filename, Modifecationdate, size, owner, usergroup, uid, permission);
