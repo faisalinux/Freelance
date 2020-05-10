@@ -1,0 +1,67 @@
+***2.1 CREATE DIRECTORIES FOR THE LAB SESSION
+mkdir -p 19026774/kf4005/bin
+tree > bashoutput.txt 
+
+***2.2 COPY THE SCRIPT AND MAKE IT EXECUTABLE
+cp /home/disk_analysis /home/student/19026774/kf4005/bin/
+cd 19026774/kf4005/bin/
+pwd > /home/student/bashoutput.txt 
+ls
+ls -l > /home/student/bashoutput.txt 
+chmod 755 disk_analysis
+cp disk_analysis disk_analysis.sh
+chmod 755 disk_analysis.sh 
+ls -l > /home/student/bashoutput.txt 
+
+***2.3 OBTAIN THE RAW DISK IMAGE
+wget -o /home/student/bashoutput.txt https://www.dropbox.com/s/888al2j4q3onydp/KF4005.img?dl=0
+cd ..
+cd bin
+
+***2.4 EXAMINE THE PARTITION TABLE
+cfdisk KF4005.img 
+
+***2.5 PARTION TABLE QUESTIONS
+1. TOTAL SIZE OF RAW DISK IMAGE = 3221225472 bytes = 3.0 GB
+2. NAME OF THE BOOTABLE PARTITION = img1
+3. OFFSET IN BYTES OF THE START OF THE FIRST PARTITION = 2048
+   HOW YOU GET THW ANSWER = cfdisk KF4005.img
+
+***2.6 MOUNT THE RAW DISK IMAGE
+**CREATE THE MOUNT POINT
+cd ..
+mkdir image
+**MOUNT THE RAW DISK IMAGE TO THE MOUNT POINT
+mount -o ro,loop,offset=1048576 bin/KF4005.img image
+sudo mount -o ro,loop,offset=1048576 bin/KF4005.img image
+ls image/
+cd bin
+
+***2.7 RESULTS FROM DISK ANALYSIS
+./disk_analysis.sh 
+mysql -u root -p
+
+
+***2.8 QUALITY OF SCRIPT
+cat bin disk_analysis.sh
+
+***2.9 finishing up and subiting work
+cp /home/student/.bash_history /home/student/bashinput.txt
+pico bashinput.txt
+mkdir /home/student/submission
+mv /home/student/bashoutput.txt /home/student/submission/
+cd /home/student/
+cp /home/student/19026774/kf4005/bin/disk_analysis.sh submission/
+cp /home/student/19026774/kf4005/bin/filedata.txt submission/
+cp /home/student/19026774/kf4005/bin/sqlout.txt submission/
+mv submission deliverables
+zip -r deliverables.zip deliverables
+
+exit
+
+
+*** CLEANING UP after submission
+cd
+pwd
+rm -r 19026774
+exit
